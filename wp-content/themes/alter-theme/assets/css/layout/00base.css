@@ -1,0 +1,14 @@
+/* =========================
+BASE
+========================= */
+
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 0px;
+}

@@ -1,0 +1,125 @@
+/* =========================
+HERO
+========================= */
+
+/* HERO */
+.hero-section {
+    padding: 50px 0;
+    background: #f8f8f8;
+}
+
+.hero-slider {
+    position: relative;
+    /* 因为内部的子元素都是绝对定位的，所以需要设置相对定位给子元素设置参考坐标，否则他的子元素会相对于文档流定位 */
+    max-width: 1200px;
+    aspect-ratio: 25 / 9;
+    /* 设置幻灯片容器的宽高比，让这个区域保持固定比例，占个高度 */
+    overflow: hidden;
+    /* 当子元素超过容器时，隐藏溢出内容 */
+}
+
+/* slide */
+.slide {
+    position: absolute;
+    /* 因为幻灯片都是Z向重叠的，所以需要absolute定位，这样设置带来的问题是，这些Slide会从文档流中脱离 */
+    inset: 0;
+    /* = top:0 left:0 width:100% height:100% */
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 保持图片比例并填充整个容器 
+    cover：保持图片的宽高比，同时确保图片完全覆盖容器。可能会裁剪图片的一部分，但不会变形。
+    contain：保持图片的宽高比，同时确保整个图片都能显示在容器内。可能会在容器周围留下空白，但不会裁剪图片或变形。
+    fill：不保持图片的宽高比，直接拉伸图片以完全填充容器。可能会导致图片变形。
+    */
+}
+
+/* arrows */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* 把自己的高度的一半再移上去，目的是将按钮垂直居中 */
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    font-size: 28px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* dots */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 把自己的长度的一半再移回去，目的是将三个点做到水平居中 */
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #333;
+}
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        padding: 10px 0;
+    }
+
+    .hero-slider {
+        aspect-ratio: 16 / 9;
+    }
+    
+    .slider-arrow {
+        font-size: 20px;
+        padding: 12px 20px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .prev {
+        left: 8px;
+    }
+
+    .next {
+        right: 8px;
+    }
+
+    .slider-dots {
+        bottom: 12px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        margin: 0 4px;
+    }
+}
